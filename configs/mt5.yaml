@@ -1,0 +1,5 @@
+model: mt5
+train:
+  epochs: 3
+  batch_size: 16
+  lr: 3e-5
