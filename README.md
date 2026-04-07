@@ -45,52 +45,52 @@ akkadian-translation-project/
 ├── README.md
 ├── requirements.txt
 ├── .gitignore
-│
+├── configs/
+│   ├── byt5.yaml
+│   └── mt5.yaml
 ├── data/
 │   ├── raw/
-│   ├── processed/
-│   └── splits/
-│
+│   │   └── train.csv
+│   └── cleaned/
+│       ├── cleaned_train.csv
+│       ├── cleaned_val.csv
+│       └── full_cleaned.csv
 ├── docs/
 │   ├── project_plan.md
 │   ├── data_notes.md
 │   └── experiment_notes.md
-│
 ├── notebooks/
 │   ├── eda.ipynb
 │   └── error_analysis.ipynb
-│
 ├── src/
 │   ├── data/
 │   │   ├── preprocess.py
 │   │   └── build_splits.py
-│   │
 │   ├── models/
 │   │   ├── train_byt5.py
 │   │   ├── train_mt5.py
 │   │   └── predict.py
-│   │
 │   ├── evaluation/
-│   │   └── metrics.py
-│   │
+│   │   ├── metrics.py
+│   │   └── compare_models.py
 │   └── utils/
-│
+│       └── helpers.py
 ├── outputs/
-│   ├── checkpoints/
-│   ├── predictions/
-│   └── results/
-│
-└── configs/
-    ├── byt5.yaml
-    └── mt5.yaml
+│   ├── checkpoints/      # runtime output directory, currently empty
+│   ├── predictions/     # runtime output directory, currently empty
+│   └── results/         # runtime output directory, currently empty
 ```
+
+> Note: `.gitignore` currently excludes `settings.json`, so `.vscode/settings.json` is not tracked by git.
 
 ---
 
 ## Data
 
-- `train.csv`: Akkadian → English pairs (used for training and validation)  
-- `test.csv`: Akkadian inputs only (used for generating predictions)  
+- `data/raw/train.csv`: Akkadian → English pairs used for training and validation
+- `data/cleaned/cleaned_train.csv`: cleaned training data
+- `data/cleaned/cleaned_val.csv`: cleaned validation data
+- `data/cleaned/full_cleaned.csv`: full cleaned dataset used for analysis and preprocessing
 
 Raw data is stored in:
 
@@ -98,12 +98,13 @@ Raw data is stored in:
 data/raw/
 ```
 
-Processed data and splits are stored in:
+Cleaned data files are stored in:
 
 ```
-data/processed/
-data/splits/
+data/cleaned/
 ```
+
+The repository does not currently include `data/processed/` or `data/splits/` directories.
 
 ---
 
